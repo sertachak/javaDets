@@ -8,14 +8,20 @@ public class Branch {
 
     public Branch(String name) {
         this.name = name;
-        customers = new ArrayList<Customer>();
+        customers = new ArrayList<>();
     }
 
-    public void addCustomerTransaction(String customerName, double transaction) {
+    public String getName() {
+        return name;
+    }
+
+    public boolean addCustomerTransaction(String customerName, double transaction) {
         Customer existingCustomer = findCustomer(customerName);
         if(existingCustomer != null){
             existingCustomer.addTransaction(transaction);
+            return true;
         }
+        return false;
     }
 
     public void addCustomer(Customer customer) {
