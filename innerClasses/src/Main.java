@@ -1,4 +1,9 @@
+import java.util.Scanner;
+
 public class Main {
+
+    private static Scanner scanner = new Scanner(System.in);
+    private static Button btnPrint = new Button("Print");
 
     public static void main(String[] args) {
         GearBox mcLaren = new GearBox(6);
@@ -15,5 +20,34 @@ public class Main {
         System.out.println(mcLaren.wheelSpeed(1000));
         mcLaren.changeGear(2);
         System.out.println(mcLaren.wheelSpeed(1000));
+
+        class ClickListener implements Button.OnClickListener {
+
+            public ClickListener() {
+                System.out.println("Listener has been attached");
+            }
+
+            @Override
+            public void onClick(String title){
+                System.out.println(title + " was clicked");
+            }
+        }
+
+        btnPrint.setOnClickListener(new ClickListener());
+        listen();
+    }
+
+
+    public static void listen() {
+        boolean quit = false;
+        while(!quit) {
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 0 -> {quit = true;
+                            System.out.println("Quit is selected");}
+                case 1 -> btnPrint.onClick();
+            }
+        }
     }
 }
