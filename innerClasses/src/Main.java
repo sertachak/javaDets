@@ -21,7 +21,7 @@ public class Main {
         mcLaren.changeGear(2);
         System.out.println(mcLaren.wheelSpeed(1000));
 
-        class ClickListener implements Button.OnClickListener {
+/*        class ClickListener implements Button.OnClickListener { // example of innerClass
 
             public ClickListener() {
                 System.out.println("Listener has been attached");
@@ -31,9 +31,14 @@ public class Main {
             public void onClick(String title){
                 System.out.println(title + " was clicked");
             }
-        }
+        }*/
 
-        btnPrint.setOnClickListener(new ClickListener());
+        btnPrint.setOnClickListener(new Button.OnClickListener() {  //example of anonymous class
+            @Override
+            public void onClick(String title) {
+                System.out.println(title + " was clicked");
+            }
+        });
         listen();
     }
 
