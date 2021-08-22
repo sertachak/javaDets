@@ -54,6 +54,15 @@ public class CustomLinkedList implements NodeList{
 
     @Override
     public void traverse(ListItem root) {
-
+        if(root == null) {
+            System.out.println("No item in list");
+        } else {
+            ListItem currentItem = root;
+            System.out.println(currentItem.getValue());
+            while(currentItem.next() != null) {
+                System.out.println(currentItem.next().getValue());
+                currentItem = currentItem.next();
+            }
+        }
     }
 }
