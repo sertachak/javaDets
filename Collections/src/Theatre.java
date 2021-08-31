@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Theatre {
     private final String name;
-    private List<Seat> seats = new ArrayList<>();
+    public List<Seat> seats = new ArrayList<>();
 
     public Theatre(String name, int numRows, int seatsPerRow) {
         this.name = name;
@@ -37,7 +37,7 @@ public class Theatre {
         seats.forEach(seat -> System.out.println(seat.getSeatNumber()));
     }
 
-    private class Seat {
+    class Seat implements Comparable<Seat> {
         private final String seatNumber;
         private boolean reserved = false;
 
@@ -67,6 +67,11 @@ public class Theatre {
 
         public String getSeatNumber() {
             return seatNumber;
+        }
+
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
         }
     }
 }
