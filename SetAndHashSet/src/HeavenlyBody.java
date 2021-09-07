@@ -27,4 +27,26 @@ public final class HeavenlyBody {
     public Set<HeavenlyBody> getSatellites() {
         return new HashSet<>(this.satellites);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if((obj == null) || (obj.getClass() != this.getClass())){
+            return false;
+        }
+
+        String objName = ((HeavenlyBody)obj).getName();
+        return this.getName().equals(objName);
+    }
+
+    @Override
+    public int hashCode(){
+        return this.name.hashCode() + 57;
+    }
+
+
+
+
 }
