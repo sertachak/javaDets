@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class PlanetsMain {
     private static Map<String, HeavenlyBody> solarSystem = new HashMap<>();
@@ -93,5 +90,21 @@ public class PlanetsMain {
         for(HeavenlyBody planet : planets) {
             System.out.println("\t" + planet.getName() + " " + planet.getOrbitalPeriod());
         }
+
+        Set<String> divine = new HashSet<>();
+        Set<String> notDivine = new HashSet<>();
+        String[] divineWords = {"ad", "1", "23423", "dsada"};
+        divine.addAll(Arrays.asList(divineWords));
+
+        for(String word : divine) {
+            System.out.println(word);
+        }
+
+        String[] notDivineWords = {"ad", "dsada"};
+        divine.retainAll(Arrays.asList(notDivineWords));
+
+        System.out.println("After retain");
+        divine.stream().forEach((word)-> System.out.println(word));
+
     }
 }
