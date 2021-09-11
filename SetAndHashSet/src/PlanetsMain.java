@@ -105,6 +105,7 @@ public class PlanetsMain {
 
         System.out.println("After retain");
         divine.stream().forEach((word)-> System.out.println(word));
+        
 
     }
 }
