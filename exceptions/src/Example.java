@@ -5,8 +5,12 @@ import java.util.Scanner;
 public class Example {
 
     public static void main(String[] args) {
-        int  result = divide();
-        System.out.println(result);
+        try {
+            int result = divide();
+            System.out.println(result);
+        } catch(ArithmeticException | NoSuchElementException e ) {
+            System.out.println(e);
+        }
     }
 
     private static int divide(){
