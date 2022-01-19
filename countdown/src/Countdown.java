@@ -1,5 +1,5 @@
 public class Countdown {
-    public void doCountdown(){
+    public synchronized void doCountdown(){
         String color = switch (Thread.currentThread().getName()) {
             case "Thread 1" -> ThreadColor.ANSI_CYAN;
             case "Thread 2" -> ThreadColor.ANSI_PURPLE;
