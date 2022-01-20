@@ -1,22 +1,32 @@
 public class Message {
     private String message;
-    private volatile boolean empty;
+    private  boolean empty = true;
 
     public synchronized String read(){
         while (empty) {
-            Thread.onSpinWait();
+            try{
+                wait();
+            } catch (InterruptedException e) {
+
+            }
 
         }
         empty = true;
+        notifyAll();
         return message;
     }
 
     public synchronized void write(String message){
         while (!empty) {
-            Thread.onSpinWait();
+            try{
+                wait();
+            } catch (InterruptedException e) {
+
+            }
 
         }
         empty = false;
+        notifyAll();
         this.message = message;
     }
 }
