@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class MainLambda {
 
@@ -21,4 +22,20 @@ public class MainLambda {
         }
 
     }
+}
+
+interface UpperConcat{
+    String upperConcat(String s1, String s2);
+}
+
+class AnotherClass{
+
+    public String doSomething(){
+        UpperConcat uc = ((s1, s2) -> {
+            System.out.println("here");
+             return s1.toUpperCase() + s2.toUpperCase();
+        });
+        return null;
+    }
+
 }
