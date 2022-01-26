@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class MainLambda {
 
     public static void main(String[] args) {
-        Employee employee1 = new Employee("Efo", 2);
-        Employee employee2 = new Employee("Coko", 1);
-        Employee employee3 = new Employee("Mete", 2);
+        Employee employee1 = new Employee("Efo devil", 2);
+        Employee employee2 = new Employee("Coko evil", 1);
+        Employee employee3 = new Employee("Mete limbo", 2);
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(employee1);
@@ -30,6 +31,23 @@ public class MainLambda {
             return employee.getName().substring(employee.getName().indexOf(' ') + 1);
         };
 
+        Function<Employee, String> getFirstName = (Employee employee) -> {
+            return employee.getName().substring(0,employee.getName().indexOf(' '));
+        };
+
+        Random random1 = new Random();
+        for(Employee employee : employeeList){
+            if(random1.nextBoolean()){
+                System.out.println(getAName(getFirstName, employee));
+            } else {
+                System.out.println(getAName(getLastName, employee));
+            }
+        }
+
+    }
+
+    private static String getAName(Function<Employee, String> getName, Employee employee){
+        return getName.apply(employee);
     }
 
     public static void printEmployeeByAge(List<Employee> employees, String ageText, Predicate<Employee> ageCondition){
