@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 public class MainLambda {
 
@@ -17,10 +18,24 @@ public class MainLambda {
         employeeList.sort((emply1, emply2) -> emply1.getName().compareTo(emply2.getName()));
 
 
-        for(Employee employee : employeeList){
+/*        for(Employee employee : employeeList){
             System.out.println(employee.getName());
-        }
+        }*/
 
+        employeeList.forEach(employee -> System.out.println(employee.getName()));
+
+        printEmployeeByAge(employeeList, "Employess over 2", employee -> employee.getAge() > 1);
+
+    }
+
+    public static void printEmployeeByAge(List<Employee> employees, String ageText, Predicate<Employee> ageCondition){
+        System.out.println(ageText);
+        employees.forEach(employee -> {
+            if(ageCondition.test(employee)){
+                System.out.println(employee.getName());
+
+            }
+        });
     }
 }
 
