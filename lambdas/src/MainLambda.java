@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class MainLambda {
@@ -26,6 +25,10 @@ public class MainLambda {
 
 
         printEmployeeByAge(employeeList, "Employess over 2", employee -> employee.getAge() > 1);
+
+        Function<Employee, String> getLastName = (Employee employee) ->{
+            return employee.getName().substring(employee.getName().indexOf(' ') + 1);
+        };
 
     }
 
