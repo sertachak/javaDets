@@ -24,14 +24,16 @@ public class MainLambda {
 
         employeeList.forEach(employee -> System.out.println(employee.getName()));
 
+
         printEmployeeByAge(employeeList, "Employess over 2", employee -> employee.getAge() > 1);
 
     }
 
     public static void printEmployeeByAge(List<Employee> employees, String ageText, Predicate<Employee> ageCondition){
+        Predicate<Employee> lowerThanThree = employee -> employee.getAge() < 3;
         System.out.println(ageText);
         employees.forEach(employee -> {
-            if(ageCondition.test(employee)){
+            if(ageCondition.and(lowerThanThree).test(employee)){
                 System.out.println(employee.getName());
 
             }
