@@ -1,4 +1,4 @@
-public class Employee {
+public class Employee  implements Comparable<Employee>{
 
     private String name;
     private int age;
@@ -23,6 +23,16 @@ public class Employee {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public int compareTo(Employee e){
+        if(name == e.name){
+            return 0;
+        }
+        return -1;
+    }
+
+
 
     @Override
     public String toString() {
