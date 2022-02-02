@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -43,6 +44,8 @@ public class MainLambda {
                 System.out.println(getAName(getLastName, employee));
             }
         }
+
+        Collections.sort(employeeList, new NameComparator());
 
     }
 
